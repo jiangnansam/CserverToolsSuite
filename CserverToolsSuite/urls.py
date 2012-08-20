@@ -4,6 +4,8 @@ from django.conf.urls import patterns, include, url
 from django.contrib import admin
 admin.autodiscover()
 
+from EnvManagement.views import *
+
 urlpatterns = patterns('',
     # Examples:
     # url(r'^$', 'CserverToolsSuite.views.home', name='home'),
@@ -14,4 +16,7 @@ urlpatterns = patterns('',
 
     # Uncomment the next line to enable the admin:
      url(r'^admin/', include(admin.site.urls)),
+     
+     
+     url(r'^environment/base/',show,{'template':'base.html'})
 )

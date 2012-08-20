@@ -1,0 +1,13 @@
+<html>
+	<head>
+		{% load custom_filters %}
+		{% load custom_tags %}		
+	</head>
+
+	<body>
+		{% currentTime "%Y-%m-%d %I:%M %p" %}
+		Hi, {{non}}
+	    {{'Hello'|sayHi:"kevin"}}
+	</body>
+
+</html>
