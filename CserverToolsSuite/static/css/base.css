@@ -1,0 +1,41 @@
+body{
+	font-size: 150%;
+	font-family: "SkolarWeb", Georgia, "Times New Roman", serif;
+	background-image: url(/static/images/background.png);
+	background-repeat: repeat;
+	color:#444;
+}
+
+section.title {
+	font-size: 50px;
+	display: -webkit-box;
+	-webkit-box-align: center;
+	-webkit-box-pack: center;
+	-webkit-box-orient: inline-axis;
+}
+
+section.container{
+	display: -webkit-box;
+}
+
+.nav{
+	-webkit-box-flex: 1;
+	box-flex:1;
+	height: 100%;
+}
+
+.content{
+	-webkit-box-flex: 8;
+	box-flex: 4;
+	height: 100%;
+}
+
+a{
+	text-decoration: none;
+}
+.nav ul{
+	list-style-type: none;
+}
+.nav ul li{
+	margin: 10%;
+}
