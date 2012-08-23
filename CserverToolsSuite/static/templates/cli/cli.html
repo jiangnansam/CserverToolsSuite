@@ -1,6 +1,20 @@
 {% extends "base.html" %}
 {% block content %}
 
-cli 
+<table>
+  <tr>
+    <th>Environment Name</th>
+    <th>Server Dns or Ip</th>
+    <th>Cli server address</th>
+  </tr>
+  {% for cli_item in cli_items %}
+  <tr>
+    <td>{{cli_item.environment_name}}</td>
+    <td>{{cli_item.server}}</td>
+    <td><a href="http://{{cli_item.cli_server_ip}}/cli">{{cli_item.cli_server_ip}}</a></td>
+  </tr>
+  {% endfor %}
+</table>
+
 
 {% endblock %}
