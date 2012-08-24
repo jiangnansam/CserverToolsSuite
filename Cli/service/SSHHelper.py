@@ -11,7 +11,6 @@ class SSHHelper(object):
     classdocs
     '''
     pingrespattern = re.compile('from (.+?) \((.*?)\)')
-    'from (.+?) \((.*?)\)'
     
     def __init__(self, env):
         '''
