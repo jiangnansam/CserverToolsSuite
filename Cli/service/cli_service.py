@@ -4,7 +4,7 @@ Created on 2012-8-20
 @author: qjwang2
 '''
 from Cli.service.SSHHelper import SSHHelper
-from EnvManagement.DBUtils import getAllEnvs
+from EnvManagement.db_utils import getAllEnvs
 
 cli_file_path = '/usr/local/tnconfig/cli_client.properties'
 
