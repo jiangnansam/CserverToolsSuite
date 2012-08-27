@@ -20,5 +20,7 @@ urlpatterns = patterns('',
      #to expose the static css&js files to outside
      url(r'^static/(?P<path>.*)$','django.views.static.serve',{'document_root':settings.STATIC_URL}),
      
-     url(r'^cli/$','Cli.views.lookupCliInfo',{'template':'cli/cli.html'})
+     url(r'^cli/$','Cli.views.lookupCliInfo',{'template':'cli/cli.html'}),
+     
+     url(r'^environment/list','CserverToolsSuite.view_test.list_env',{'template':'env/list.html'}),
 )
