@@ -1,0 +1,31 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+<ul id="sub_nav">
+	<li><a href="/environment/new">New</a></li>
+	<li><a href="#">Delete</a></li>
+</ul>
+
+<table>
+  <tr>
+    <th>Environment Name</th>
+    <th>Corresponding Server</th>
+    <th>Tomcat Path</th>
+    <th>ZipFolder Path</th>
+    <th>ServiceLocator Path</th>
+  </tr>
+  {% for env in env_list %}
+	  <tr>
+	    <td><a href="/environment/edit/{{env.id}}">{{env.env_name}}</a></td>
+	    <td>{{env.server}}</td>
+	    <td>{{env.tomcat_path}}</td>
+	    <td>{{env.env_name}}</td>
+	    <td>{{env.service_locator_path}}</td>
+	  </tr>
+  {% endfor %}
+</table>
+
+
+
+{% endblock %}
