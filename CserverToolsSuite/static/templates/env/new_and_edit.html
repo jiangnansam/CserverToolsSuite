@@ -1,0 +1,26 @@
+{% extends 'base.html'%}
+
+{% block content %}
+
+<form action="/environment/save" method="post">
+    <fieldset class="create_environment">
+    	<legend>Create Environment</legend>
+		<label class="text_label">environment name</label>
+		<input type="text" name="env_name" class="text_field" min="undefined" max="undefined">
+		<label class="text_label">server dns/ip</label>
+		<input type="text" name="server" class="text_field" min="undefined" max="undefined">
+		<label class="text_label">username</label>
+		<input type="text" name="username" class="text_field" min="undefined" max="undefined">
+		<label class="text_label">password</label>
+		<input type="password" name="password" class="text_field" min="undefined" max="undefined">
+		<label class="text_label">tomcat home</label>
+		<input type="text" name="tomcat_path" class="text_field" min="undefined" max="undefined">
+		<label class="text_label">zipfolder path</label>
+		<input type="text" name="zipfolder_path" class="text_field" min="undefined" max="undefined">
+		<label class="text_label">servicelocator path</label>
+		<input type="text" name="service_locator_path" class="text_field" min="undefined" max="undefined">
+		<button type="submit" class="btn_create_env">Save</button>
+		<div class="clearfix"></div>
+	</fieldset>
+</form>
+{% endblock %}
