@@ -4,24 +4,28 @@
 
 <ul id="sub_nav">
 	<li><a href="/environment/new">New</a></li>
-	<li><a href="#">Delete</a></li>
 </ul>
 
 <table>
   <tr>
-    <th>Environment Name</th>
-    <th>Corresponding Server</th>
+    <th>Environment</th>
+    <th>Server</th>
     <th>Tomcat Path</th>
     <th>ZipFolder Path</th>
     <th>ServiceLocator Path</th>
+    <th>Operations</th>
   </tr>
   {% for env in env_list %}
 	  <tr>
-	    <td><a href="/environment/edit/{{env.id}}">{{env.env_name}}</a></td>
+	    <td>{{env.env_name}}</td>
 	    <td>{{env.server}}</td>
 	    <td>{{env.tomcat_path}}</td>
 	    <td>{{env.env_name}}</td>
 	    <td>{{env.service_locator_path}}</td>
+	    <td>
+	    	<a href="/environment/edit/{{env.id}}"><img class="list_icon" src="/static/images/edit.png"/></a>
+	    	<a href="/environment/delete/{{env.id}}"><img class="list_icon" src="/static/images/delete.png"/></a>
+	    </td>
 	  </tr>
   {% endfor %}
 </table>

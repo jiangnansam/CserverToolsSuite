@@ -5,22 +5,22 @@
 <form action="/environment/save" method="post">
     <fieldset class="create_environment">
     	<legend>Create Environment</legend>
+    	<input type="hidden" name="id" value="{{env.id}}"/>
 		<label class="text_label">environment name</label>
-		<input type="text" name="env_name" class="text_field" min="undefined" max="undefined">
+		<input type="text" name="env_name" class="text_field" min="undefined" max="undefined" value="{{env.env_name}}">
 		<label class="text_label">server dns/ip</label>
-		<input type="text" name="server" class="text_field" min="undefined" max="undefined">
+		<input type="text" name="server" class="text_field" min="undefined" max="undefined" value="{{env.server}}">
 		<label class="text_label">username</label>
-		<input type="text" name="username" class="text_field" min="undefined" max="undefined">
+		<input type="text" name="username" class="text_field" min="undefined" max="undefined" value="{{env.username}}">
 		<label class="text_label">password</label>
-		<input type="password" name="password" class="text_field" min="undefined" max="undefined">
+		<input type="password" name="password" class="text_field" min="undefined" max="undefined" value="{{env.password}}">
 		<label class="text_label">tomcat home</label>
-		<input type="text" name="tomcat_path" class="text_field" min="undefined" max="undefined">
+		<input type="text" name="tomcat_path" class="text_field" min="undefined" max="undefined" value="{{env.tomcat_path}}">
 		<label class="text_label">zipfolder path</label>
-		<input type="text" name="zipfolder_path" class="text_field" min="undefined" max="undefined">
+		<input type="text" name="zipfolder_path" class="text_field" min="undefined" max="undefined" value="{{env.zipfolder_path}}">
 		<label class="text_label">servicelocator path</label>
-		<input type="text" name="service_locator_path" class="text_field" min="undefined" max="undefined">
-		<button type="submit" class="btn_create_env">Save</button>
-		<div class="clearfix"></div>
+		<input type="text" name="service_locator_path" class="text_field" min="undefined" max="undefined" value="{{env.service_locator_path}}">
+		<button type="submit" class="btn_create_env">Save</button> <button type="button" class="btn_create_env" id="cancel_save_env">Cancel</button>
 	</fieldset>
 </form>
 {% endblock %}

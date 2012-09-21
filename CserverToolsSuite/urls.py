@@ -22,9 +22,15 @@ urlpatterns = patterns('',
      
      url(r'^cli/$','Cli.views.lookupCliInfo',{'template':'cli/cli.html'}),
      
+     
+     #for environment operations
      url(r'^environment/list','CserverToolsSuite.view_test.list_env',{'template':'env/list.html'}),
      
      url(r'^environment/new','CserverToolsSuite.view_test.new_env',{'template':'env/new_and_edit.html'}),
      
      url(r'^environment/save','CserverToolsSuite.view_test.save_env',{'template':'env/list.html'}),
+     
+     url(r'^environment/edit/(?P<envID>\d+)','CserverToolsSuite.view_test.edit_env',{'template':'env/new_and_edit.html'}),
+     
+     url(r'^environment/delete/(?P<envID>\d+)','CserverToolsSuite.view_test.delete_env',{'template':'env/list.html'}),
 )
