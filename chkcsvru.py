@@ -4,6 +4,8 @@ Created on 2012-9-21
 @author: Attis Wong
 '''
 import os
+import re
+import subprocess
 
 '''
 User Guide and Specification:
@@ -103,10 +105,35 @@ class FolderExistenceChecker(object):
            
         return Formatter('Check Log Folder',self.directory,status)
 
+class JavaVersionChecker(object):
+    
+    def __init__(self, refvalue, desc='Check java version'):
+        self.desc = desc
+        self.refvalue = refvalue
+        
+    def check(self):    
+        javareg = re.compile('java version "(.+?)"')
+        sp = subprocess.Popen(["java", "-version"], stdout=subprocess.PIPE, stderr=subprocess.PIPE)
+        ostring = sp.communicate()[1]
+        matchGroup = re.search(javareg, ostring)
+        if matchGroup:
+            actualValue = matchGroup.group(1)
+            if actualValue==self.refvalue:
+                status = 'match'
+        
+            else:
+                status = 'mismatch'
+        else:
+            status= 'error'
+        
+        return Formatter(self.desc, self.refvalue, status, actualValue)        
+
+
 checkList = [
-             SimpleSampleChecker(),
-             ComplexSampleChecker(),
-             FolderExistenceChecker('/home/tnuser/logs/TeleNav60','Check Log Folder')
+             #SimpleSampleChecker(),
+             #ComplexSampleChecker(),
+             FolderExistenceChecker('/home/tnuser/logs/TeleNav60','Check Log Folder'),
+             JavaVersionChecker('1.6.0_29')
              ]
 
 #<block3>
