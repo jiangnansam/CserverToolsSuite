@@ -1,8 +1,10 @@
+# coding=UTF-8
 '''
 Created on 2012-9-21
 
 @author: Attis Wong
 '''
+
 import os
 import re
 import subprocess
@@ -99,9 +101,9 @@ class FolderExistenceChecker(object):
         self.directory = directory
         
     def check(self):
-        status = 'do not exist'
+        status = 'X'
         if os.path.isdir(self.directory):
-            status = 'exist'
+            status = '√'
            
         return Formatter('Check Log Folder',self.directory,status)
 
@@ -119,12 +121,12 @@ class JavaVersionChecker(object):
         if matchGroup:
             actualValue = matchGroup.group(1)
             if actualValue==self.refvalue:
-                status = 'match'
+                status = '√'
         
             else:
-                status = 'mismatch'
+                status = 'X'
         else:
-            status= 'error'
+            status= '-'
         
         return Formatter(self.desc, self.refvalue, status, actualValue)        
 
