@@ -24,13 +24,13 @@ urlpatterns = patterns('',
      
      
      #for environment operations
-     url(r'^environment/list','CserverToolsSuite.view_test.list_env',{'template':'env/list.html'}),
+     url(r'^environment/list','EnvManagement.views.get_env',{'template':'env/list.html'}),
      
-     url(r'^environment/new','CserverToolsSuite.view_test.new_env',{'template':'env/new_and_edit.html'}),
+     url(r'^environment/new','EnvManagement.views.new_env',{'template':'env/new_and_edit.html'}),
      
-     url(r'^environment/save','CserverToolsSuite.view_test.save_env',{'template':'env/list.html'}),
+     url(r'^environment/save','EnvManagement.views.add_env',{'template':'env/list.html'}),
      
-     url(r'^environment/edit/(?P<envID>\d+)','CserverToolsSuite.view_test.edit_env',{'template':'env/new_and_edit.html'}),
+     url(r'^environment/edit/(?P<envID>\d+)','EnvManagement.views.edit_env',{'template':'env/new_and_edit.html'}),
      
-     url(r'^environment/delete/(?P<envID>\d+)','CserverToolsSuite.view_test.delete_env',{'template':'env/list.html'}),
+     url(r'^environment/delete/(?P<envID>\d+)','EnvManagement.views.delete_env',{'template':'env/list.html'}),
 )
