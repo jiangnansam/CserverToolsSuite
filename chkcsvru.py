@@ -1,10 +1,10 @@
-# coding=UTF-8
 '''
 Created on 2012-9-21
 
 @author: Attis Wong
 '''
 
+from __future__ import division
 import os
 import re
 import subprocess
@@ -29,6 +29,9 @@ class Formatter(object):
         self.status = status;
 
 cplxtoken = '->'
+passflag = 'pass'
+failflag = 'fail'
+errorflag = 'error'
 
 print_gap = {'desc':len('desc'),'refinfo':len('refinfo'),'actualinfo':len('actualinfo'),'status':len('status')}
 
@@ -101,9 +104,9 @@ class FolderExistenceChecker(object):
         self.directory = directory
         
     def check(self):
-        status = 'X'
+        status = failflag
         if os.path.isdir(self.directory):
-            status = '√'
+            status = passflag
            
         return Formatter('Check Log Folder',self.directory,status)
 
@@ -121,21 +124,46 @@ class JavaVersionChecker(object):
         if matchGroup:
             actualValue = matchGroup.group(1)
             if actualValue==self.refvalue:
-                status = '√'
+                status = passflag
         
             else:
-                status = 'X'
+                status = failflag
         else:
-            status= '-'
+            status= errorflag
         
         return Formatter(self.desc, self.refvalue, status, actualValue)        
 
+class MemoryChecker(object):
+    
+    def __init__(self, refvalue, desc='Check Total Memory(kb)'):
+        self.desc = desc
+        self.refvalue = refvalue
+        
+    def check(self):
+        memreg = re.compile('MemTotal:      (\d+?) kB')
+        memInfo = subprocess.Popen(["cat", "/proc/meminfo"], stdout=subprocess.PIPE)
+        memTotalInfo = subprocess.Popen(["grep", "MemTotal"], stdin=memInfo.stdout, stdout=subprocess.PIPE)
+        ostring = memTotalInfo.communicate()[0]
+        matchGroup = re.search(memreg, ostring)
+        if matchGroup:
+            actualValue = matchGroup.group(1)
+            reflong = long(self.refvalue)
+            actuallong = long(actualValue)
+            if abs(reflong-actuallong)/reflong < 0.1:
+                status = passflag
+            else:
+                status = failflag
+        else:
+            status = errorflag
+            
+        return Formatter(self.desc, self.refvalue, status, actualValue)
 
 checkList = [
              #SimpleSampleChecker(),
              #ComplexSampleChecker(),
              FolderExistenceChecker('/home/tnuser/logs/TeleNav60','Check Log Folder'),
-             JavaVersionChecker('1.6.0_29')
+             JavaVersionChecker('1.6.0_29'),
+             MemoryChecker(str(8*1024*1024))
              ]
 
 #<block3>
@@ -148,7 +176,7 @@ for checkItem in checkList:
     setGap(formatter)
 
 print '\n'
-print 'Check 7x CServer Deployment Configuration'
+print '7x CServer Deployment Environment Validation'
 printFormat('', '', '', '', token='*', gap='*')
 printFormat('desc', 'refinfo', 'actualinfo', 'status')
 printFormat('', '', '', '', token='-', gap='-')
