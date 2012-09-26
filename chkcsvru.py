@@ -135,7 +135,7 @@ class JavaVersionChecker(object):
 
 class MemoryChecker(object):
     
-    def __init__(self, refvalue, desc='Check Total Memory(kb)'):
+    def __init__(self, refvalue, desc='Check Total Memory(kB)'):
         self.desc = desc
         self.refvalue = refvalue
         
