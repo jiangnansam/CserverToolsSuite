@@ -33,4 +33,8 @@ urlpatterns = patterns('',
      url(r'^environment/edit/(?P<envID>\d+)','EnvManagement.views.edit_env',{'template':'env/new_and_edit.html'}),
      
      url(r'^environment/delete/(?P<envID>\d+)','EnvManagement.views.delete_env',{'template':'env/list.html'}),
+     
+     url(r'^dbtracking/list','DBReleaseFlow.views.get_fixverison',{'template':'dbtracking/list.html'}),
+     
+     url(r'^dbtracking/query','DBReleaseFlow.views.query_jira',{'template':'dbtracking/list.html'}),
 )

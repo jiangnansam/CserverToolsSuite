@@ -24,8 +24,9 @@ section.container{
 }
 
 .content{
-	width:80%;
+	width:65%;
 	height: 100%;
+	text-align: center;
 }
 
 a{
